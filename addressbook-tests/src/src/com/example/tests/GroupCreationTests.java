@@ -14,15 +14,13 @@ import static org.junit.Assert.fail;
  * Created by Mikhail on 25.08.2015.
  */
 public class GroupCreationTests {
-    private WebDriver driver;
-    private String baseUrl;
+    private WebDriver driver = new FirefoxDriver();
+    private String baseUrl = "http://localhost/";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "http://localhost/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
