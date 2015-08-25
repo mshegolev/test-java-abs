@@ -1,10 +1,10 @@
 package com.example.tests;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.*;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +33,10 @@ public class GroupCreationTests {
         initGroupsPage();
         GroupsData groupsData = new GroupsData();
 
-        groupsData.;
+        groupsData.name = "group name 1";
+        groupsData.header = "group name 1";
+        groupsData.footer = "group name 1";
+
         /*groupsData.setName("groups 52");
         groupsData.setFooter("footer 52");
         groupsData.setHeader("header 52");*/
@@ -63,11 +66,11 @@ public class GroupCreationTests {
 
     private void fillGroupForm(GroupsData groupsData) {
         driver.findElement(By.name("group_name")).clear();
-        driver.findElement(By.name("group_name")).sendKeys(groupsData.getName());
+        driver.findElement(By.name("group_name")).sendKeys(groupsData.name);
         driver.findElement(By.name("group_header")).clear();
-        driver.findElement(By.name("group_header")).sendKeys(groupsData.getHeader());
+        driver.findElement(By.name("group_header")).sendKeys(groupsData.header);
         driver.findElement(By.name("group_footer")).clear();
-        driver.findElement(By.name("group_footer")).sendKeys(groupsData.getFooter());
+        driver.findElement(By.name("group_footer")).sendKeys(groupsData.footer);
     }
 
     private void initGroupsPage() {

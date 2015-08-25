@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.testng:com.springsource.org.testng:6.5.2" level="project" />
   </component>
 </module>
