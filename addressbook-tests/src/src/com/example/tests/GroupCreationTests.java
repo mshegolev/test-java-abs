@@ -30,30 +30,39 @@ public class GroupCreationTests {
     public void testUntitled() throws Exception {
         openMainPage();
         openGroupsPage();
+        initGroupsPage();
+        fillGroupForm();
+        submitGroupCreation();
+        returnToGroupsPage();
 
+    }
 
-        // init new group creation
-        driver.findElement(By.name("new")).click();
-        // fill group form
+    private void returnToGroupsPage() {
+        driver.findElement(By.linkText("group page")).click();
+    }
+
+    private void submitGroupCreation() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    private void fillGroupForm() {
         driver.findElement(By.name("group_name")).clear();
         driver.findElement(By.name("group_name")).sendKeys("group 1");
         driver.findElement(By.name("group_header")).clear();
         driver.findElement(By.name("group_header")).sendKeys("header 1");
         driver.findElement(By.name("group_footer")).clear();
         driver.findElement(By.name("group_footer")).sendKeys("footer 1");
-        // submit group creation
-        driver.findElement(By.name("submit")).click();
-            /* return to groups page */
-        driver.findElement(By.linkText("group page")).click();
+    }
+
+    private void initGroupsPage() {
+        driver.findElement(By.name("new")).click();
     }
 
     private void openGroupsPage() {
-        // open groups page
         driver.findElement(By.linkText("groups")).click();
     }
 
     private void openMainPage() {
-        // open main page
         driver.get(baseUrl + "/addressbookv4.1.4/");
     }
 
