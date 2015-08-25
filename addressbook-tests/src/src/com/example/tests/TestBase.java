@@ -106,4 +106,40 @@ public class TestBase {
             fail(verificationErrorString);
         }
     }
+
+    protected void defaultContact(ContactData contactData) {
+        contactData.firstName = "firstName";
+        contactData.lastName = "lastName";
+        contactData.address = "address";
+        contactData.homePhone = "homePhone";
+        contactData.modilePhone = "modilePhone";
+        contactData.workPhone = "workPhone";
+        contactData.emailFirsts = "emailFirsts";
+        contactData.emailSecond = "emailSecond";
+        //TODO: add select numberic day
+        contactData.birthdayDay = "1";
+        //TODO: add select mounth
+        contactData.bithdayMounth = "January";
+        //TODO: add input year
+        contactData.birthdayYear = "1990";
+        //TODO: add select exsistings group
+        contactData.selectGroup = "[none]";
+        contactData.secondaryAddressSecond = "secondaryAddressSecond";
+        //TODO: BUG3|2. phone2 may by rename this field for secondaddresshome
+        contactData.secondaryAddressHome = "secondaryAddressHome";
+    }
+
+    protected void clickDelete() {
+        driver.findElement(By.xpath("(//input[@name='update'])[2]")).click();
+    }
+
+    //TODO: write xpath querry
+    protected void EditContact() {
+        By.xpath("id('maintable'):tbody(like\"lastname\"):td[7]/x:a/x:img").findElement(driver).click();
+    }
+
+    //TODO: write xpath querry
+    protected void selectContact() {
+        driver.findElement(By.id("select by name")).click();
+    }
 }

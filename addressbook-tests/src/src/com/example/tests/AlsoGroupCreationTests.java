@@ -3,7 +3,7 @@ package com.example.tests;
 import org.testng.annotations.Test;
 
 /**
- * Created by Mikhail on 25.08.2015.
+ #parse Created by Mikhail on 25.08.2015.
  */
 public class AlsoGroupCreationTests extends TestBase{
 
@@ -29,7 +29,7 @@ public class AlsoGroupCreationTests extends TestBase{
         openMainPage();
         openGroupsPage();
         initGroupsPage();
-        fillGroupForm(new GroupsData("", "", ""));
+        fillGroupForm(null);
         submitGroupCreation();
         returnToGroupsPage();
     }

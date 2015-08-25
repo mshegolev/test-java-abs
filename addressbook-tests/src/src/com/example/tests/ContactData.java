@@ -1,20 +1,21 @@
 package com.example.tests;
 
 public class ContactData {
-    private final String firstName;
-    private final String lastName;
-    private final String address;
-    private final String homePhone;
-    private final String modilePhone;
-    private final String workPhone;
-    private final String emailFirsts;
-    private final String emailSecond;
-    private final String birthdayDay;
-    private final String bithdayMounth;
-    private final String birthdayYear;
-    private final String selectGroup;
-    private final String secondaryAddressSecond;
-    private final String secondaryAddressHome;
+    public String firstName;
+    public String lastName;
+    public String address;
+    public String homePhone;
+    public String modilePhone;
+    public String workPhone;
+    public String emailFirsts;
+    public String emailSecond;
+    public String birthdayDay;
+    public String bithdayMounth;
+    public String birthdayYear;
+    public String selectGroup;
+    public String secondaryAddressSecond;
+    public String secondaryAddressHome;
+    public String groupName;
 
     public ContactData(String firstName, String lastName, String address, String homePhone, String modilePhone, String workPhone, String emailFirsts, String emailSecond, String birthdayDay, String bithdayMounth, String birthdayYear, String selectGroup, String secondaryAddressSecond, String secondaryAddressHome) {
         this.firstName = firstName;
@@ -31,6 +32,9 @@ public class ContactData {
         this.selectGroup = selectGroup;
         this.secondaryAddressSecond = secondaryAddressSecond;
         this.secondaryAddressHome = secondaryAddressHome;
+    }
+
+    public ContactData() {
     }
 
     public String getFirstName() {
@@ -79,6 +83,11 @@ public class ContactData {
 
     public String getSelectGroup() {
         return selectGroup;
+    }
+
+    public String setSelectGroup(String groupName) {
+        this.groupName = groupName;
+        return groupName;
     }
 
     public String getSecondaryAddressSecond() {
