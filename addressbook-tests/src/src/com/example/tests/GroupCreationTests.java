@@ -27,14 +27,30 @@ public class GroupCreationTests {
     }
 
     @Test
-    public void testUntitled() throws Exception {
+    public void testNonEmptyGroupCreation() throws Exception {
         openMainPage();
         openGroupsPage();
         initGroupsPage();
-        fillGroupForm();
+        GroupsData groupsData = new GroupsData();
+
+        groupsData.;
+        /*groupsData.setName("groups 52");
+        groupsData.setFooter("footer 52");
+        groupsData.setHeader("header 52");*/
+        fillGroupForm(groupsData);
         submitGroupCreation();
         returnToGroupsPage();
 
+    }
+
+    @Test
+    public void testEmptyGroupCreation() throws Exception {
+        openMainPage();
+        openGroupsPage();
+        initGroupsPage();
+        fillGroupForm(new GroupsData("", "", ""));
+        submitGroupCreation();
+        returnToGroupsPage();
     }
 
     private void returnToGroupsPage() {
@@ -45,13 +61,13 @@ public class GroupCreationTests {
         driver.findElement(By.name("submit")).click();
     }
 
-    private void fillGroupForm() {
+    private void fillGroupForm(GroupsData groupsData) {
         driver.findElement(By.name("group_name")).clear();
-        driver.findElement(By.name("group_name")).sendKeys("group 1");
+        driver.findElement(By.name("group_name")).sendKeys(groupsData.getName());
         driver.findElement(By.name("group_header")).clear();
-        driver.findElement(By.name("group_header")).sendKeys("header 1");
+        driver.findElement(By.name("group_header")).sendKeys(groupsData.getHeader());
         driver.findElement(By.name("group_footer")).clear();
-        driver.findElement(By.name("group_footer")).sendKeys("footer 1");
+        driver.findElement(By.name("group_footer")).sendKeys(groupsData.getFooter());
     }
 
     private void initGroupsPage() {
