@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,13 +15,15 @@ import static org.junit.Assert.fail;
  * Created by Mikhail on 25.08.2015.
  */
 public class TestBase {
-    protected WebDriver driver = new FirefoxDriver();
-    private String baseUrl = "http://localhost/";
+    private static WebDriver driver;
+    private static String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
+        driver = new FirefoxDriver();
+        baseUrl = "http://localhost/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -48,11 +52,11 @@ public class TestBase {
         driver.findElement(By.linkText("groups")).click();
     }
 
-    protected void openMainPage() {
+    public void openMainPage() {
         driver.get(baseUrl + "/addressbookv4.1.4/");
     }
 
-    @After
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
