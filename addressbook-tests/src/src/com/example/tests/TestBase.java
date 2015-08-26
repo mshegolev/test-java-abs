@@ -22,7 +22,7 @@ public class TestBase {
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://localhost/";
+        baseUrl = "http://addressbook.webuda.com//";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -34,6 +34,8 @@ public class TestBase {
         driver.findElement(By.name("submit")).click();
     }
 
+    protected void fillGroupForm() {
+    }
     protected void fillGroupForm(GroupsData groupsData) {
         driver.findElement(By.name("group_name")).clear();
         driver.findElement(By.name("group_name")).sendKeys(groupsData.name);
@@ -52,7 +54,7 @@ public class TestBase {
     }
 
     public void openMainPage() {
-        driver.get(String.format("%s/addressbookv4.1.4/", baseUrl));
+        driver.get(String.format("%s", baseUrl));
     }
 
     protected void initCreateContactPage() {

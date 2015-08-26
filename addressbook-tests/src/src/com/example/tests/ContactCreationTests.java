@@ -58,13 +58,14 @@ public class ContactCreationTests extends TestBase {
         submitContactCreation();
         returnToHomePage();
     }
-
+/*
     @Test
     public void deleteContact() throws Exception {
         openMainPage();
         EditContact();
         clickDelete();
     }
+*/
 
 }
 

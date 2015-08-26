@@ -29,7 +29,7 @@ public class AlsoGroupCreationTests extends TestBase{
         openMainPage();
         openGroupsPage();
         initGroupsPage();
-        fillGroupForm(null);
+        fillGroupForm();
         submitGroupCreation();
         returnToGroupsPage();
     }
