@@ -36,7 +36,7 @@ public class TestBase {
 
     protected void fillGroupForm() {
     }
-    protected void fillGroupForm(GroupsData groupsData) {
+    protected void fillGroupForm(com.example.tests.GroupsData groupsData) {
         driver.findElement(By.name("group_name")).clear();
         driver.findElement(By.name("group_name")).sendKeys(groupsData.name);
         driver.findElement(By.name("group_header")).clear();
