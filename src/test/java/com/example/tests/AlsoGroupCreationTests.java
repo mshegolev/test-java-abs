@@ -14,7 +14,7 @@ public class AlsoGroupCreationTests extends TestBase{
         initGroupsPage();
         GroupsData groupsData = new GroupsData();
 
-        groupsData.name = "group name 1 fix";
+        groupsData.name = "group name 1";
         groupsData.header = "group name 1";
         groupsData.footer = "group name 1";
 
