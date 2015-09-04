@@ -9,27 +9,27 @@ public class GroupCreationTests extends TestBase{
 
     @Test
     public void testNonEmptyGroupCreation() throws Exception {
-        openMainPage();
-        openGroupsPage();
-        initGroupsPage();
+        app.openMainPage();
+        app.openGroupsPage();
+        app.initGroupsPage();
         GroupsData groupsData = new GroupsData();
         groupsData.name = "group name 1";
         groupsData.header = "group name 1";
         groupsData.footer = "group name 1";
-        fillGroupForm(groupsData);
-        submitGroupCreation();
-        returnToGroupsPage();
+        app.fillGroupForm(groupsData);
+        app.submitGroupCreation();
+        app.returnToGroupsPage();
 
     }
 
     @Test
     public void testEmptyGroupCreation() throws Exception {
-        openMainPage();
-        openGroupsPage();
-        initGroupsPage();
-        fillGroupForm(new GroupsData("", "", ""));
-        submitGroupCreation();
-        returnToGroupsPage();
+        app.openMainPage();
+        app.openGroupsPage();
+        app.initGroupsPage();
+        app.fillGroupForm(new GroupsData("", "", ""));
+        app.submitGroupCreation();
+        app.returnToGroupsPage();
     }
 
 

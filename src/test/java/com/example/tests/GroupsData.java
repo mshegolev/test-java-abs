@@ -1,9 +1,9 @@
 package com.example.tests;
 
 public class GroupsData {
-    protected String name;
-    protected  String header;
-    protected  String footer;
+    public String name;
+    public String header;
+    public String footer;
 
     public GroupsData() {
             }

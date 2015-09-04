@@ -9,28 +9,28 @@ import org.testng.annotations.Test;
 public class ContactCreationTests extends TestBase {
     @Test
     public void addNonEmptyContactNoGroup() throws Exception {
-            openMainPage();
-            initCreateContactPage();
+            app.openMainPage();
+            app.initCreateContactPage();
         ContactData contactData = new ContactData();
-        defaultContact(contactData);
-        fillContactForm(contactData);
-            submitContactCreation();
-            returnToHomePage();
+        app.defaultContact(contactData);
+        app.fillContactForm(contactData);
+            app.submitContactCreation();
+            app.returnToHomePage();
         }
 
     @Test
     public void addNonEmptyContactToGroup() throws Exception {
-        openMainPage();
-        openGroupsPage();
-        initGroupsPage();
+        app.openMainPage();
+        app.openGroupsPage();
+        app.initGroupsPage();
         GroupsData groupsData = new GroupsData();
         groupsData.name = "Auto_addNonEmptyContactToGroup1";
         groupsData.header = "header test for new contact";
         groupsData.footer = "footer test for new contact";
-        fillGroupForm(groupsData);
-        submitGroupCreation();
-        openMainPage();
-        initCreateContactPage();
+        app.fillGroupForm(groupsData);
+        app.submitGroupCreation();
+        app.openMainPage();
+        app.initCreateContactPage();
         ContactData contactData = new ContactData();
         contactData.firstName = "firstName";
         contactData.lastName = "lastName";
@@ -46,18 +46,18 @@ public class ContactCreationTests extends TestBase {
         contactData.selectGroup = groupsData.name;
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         contactData.secondaryAddressHome = "secondaryAddressHome";
-        fillContactForm();
-        submitContactCreation();
-        returnToHomePage();
+        app.fillContactForm();
+        app.submitContactCreation();
+        app.returnToHomePage();
     }
 
     @Test
     public void addEmptyContact() throws Exception {
-        openMainPage();
-        initCreateContactPage();
-        fillContactForm();
-        submitContactCreation();
-        returnToHomePage();
+        app.openMainPage();
+        app.initCreateContactPage();
+        app.fillContactForm();
+        app.submitContactCreation();
+        app.returnToHomePage();
     }
 /*
     @Test
