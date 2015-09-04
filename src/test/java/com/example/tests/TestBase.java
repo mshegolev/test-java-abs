@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -22,8 +23,10 @@ public class TestBase {
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://addressbook.webuda.com";
+//        baseUrl = "http://www.addressbook.webuda.com";
+        baseUrl = "http://addressbook.esy.es";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
 
     protected void returnToGroupsPage() {
@@ -55,7 +58,7 @@ public class TestBase {
 
     public void openMainPage() {
         driver.get(String.format("%s", baseUrl));
-    }
+   }
 
     protected void initCreateContactPage() {
         driver.findElement(By.linkText("add new")).click();
@@ -129,6 +132,18 @@ public class TestBase {
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         //TODO: BUG3|2. phone2 may by rename this field for secondaddresshome
         contactData.secondaryAddressHome = "secondaryAddressHome";
+    }
+
+    public void closeReklama() throws Exception {
+//        driver.get(baseUrl + "/");
+        driver.get(baseUrl + "/");
+        assertEquals("Address book", driver.getTitle());
+        driver.findElement(By.cssSelector("a.close.bClose")).click();
+        driver.findElement(By.linkText("home")).click();
+        // ERROR: Caught exception [ERROR: Unsupported command [waitForPopUp | wy7vo | 30000]]
+        assertEquals("Address book", driver.getTitle());
+        driver.findElement(By.linkText("home")).click();
+        assertEquals("Address book", driver.getTitle());
     }
 
     protected void clickDelete() {

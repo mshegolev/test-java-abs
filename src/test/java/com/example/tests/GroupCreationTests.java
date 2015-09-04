@@ -13,14 +13,9 @@ public class GroupCreationTests extends TestBase{
         openGroupsPage();
         initGroupsPage();
         GroupsData groupsData = new GroupsData();
-
         groupsData.name = "group name 1";
         groupsData.header = "group name 1";
         groupsData.footer = "group name 1";
-
-        /*groupsData.setName("groups 52");
-        groupsData.setFooter("footer 52");
-        groupsData.setHeader("header 52");*/
         fillGroupForm(groupsData);
         submitGroupCreation();
         returnToGroupsPage();
