@@ -1,5 +1,6 @@
 package com.example.tests;
 
+import com.example.fw.ApplicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,6 +17,7 @@ import static org.junit.Assert.fail;
  #parse Created by Mikhail on 25.08.2015.
  */
 public class TestBase {
+    protected ApplicationManager app;
     private static WebDriver driver;
     private static String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -23,7 +25,6 @@ public class TestBase {
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-//        baseUrl = "http://www.addressbook.webuda.com";
         baseUrl = "http://addressbook.esy.es";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
