@@ -7,7 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by mikhail.shchegolev on 04.09.2015.
  */
-public class ContactHelper {
+public class ContactHelper extends HelperBase {
+    public ContactHelper(ApplicationManager manager) {
+        super(manager);
+    }
+
     public void fillContactForm() {
     }
 
@@ -33,39 +37,39 @@ public class ContactHelper {
         contactData.secondaryAddressHome = "secondaryAddressHome";
     }
 
-    public void submitContactCreation(ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.name("submit")).click();
+    public void submitContactCreation() {
+        manager.driver.findElement(By.name("submit")).click();
     }
 
-    public void initCreateContactPage(ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.linkText("add new")).click();
+    public void initCreateContactPage() {
+        manager.driver.findElement(By.linkText("add new")).click();
     }
 
-    public void fillContactForm(ContactData contactData, ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.name("firstname")).clear();
-        applicationManager.driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
-        applicationManager.driver.findElement(By.name("lastname")).clear();
-        applicationManager.driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-        applicationManager.driver.findElement(By.name("address")).clear();
-        applicationManager.driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
-        applicationManager.driver.findElement(By.name("home")).clear();
-        applicationManager.driver.findElement(By.name("home")).sendKeys(contactData.getHomePhone());
-        applicationManager.driver.findElement(By.name("mobile")).clear();
-        applicationManager.driver.findElement(By.name("mobile")).sendKeys(contactData.getModilePhone());
-        applicationManager.driver.findElement(By.name("work")).clear();
-        applicationManager.driver.findElement(By.name("work")).sendKeys(contactData.getWorkPhone());
-        applicationManager.driver.findElement(By.name("email")).clear();
-        applicationManager.driver.findElement(By.name("email")).sendKeys(contactData.getEmailFirsts());
-        applicationManager.driver.findElement(By.name("email2")).clear();
-        applicationManager.driver.findElement(By.name("email2")).sendKeys(contactData.getEmailSecond());
-        new Select(applicationManager.driver.findElement(By.name("bday"))).selectByVisibleText(contactData.getBirthdayDay());
-        new Select(applicationManager.driver.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBithdayMounth());
-        applicationManager.driver.findElement(By.name("byear")).clear();
-        applicationManager.driver.findElement(By.name("byear")).sendKeys(contactData.getBirthdayYear());
-        new Select(applicationManager.driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getSelectGroup());
-        applicationManager.driver.findElement(By.name("address2")).clear();
-        applicationManager.driver.findElement(By.name("address2")).sendKeys(contactData.getSecondaryAddressSecond());
-        applicationManager.driver.findElement(By.name("phone2")).clear();
-        applicationManager.driver.findElement(By.name("phone2")).sendKeys(contactData.getSecondaryAddressHome());
+    public void fillContactForm(ContactData contactData) {
+        manager.driver.findElement(By.name("firstname")).clear();
+        manager.driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+        manager.driver.findElement(By.name("lastname")).clear();
+        manager.driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+        manager.driver.findElement(By.name("address")).clear();
+        manager.driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
+        manager.driver.findElement(By.name("home")).clear();
+        manager.driver.findElement(By.name("home")).sendKeys(contactData.getHomePhone());
+        manager.driver.findElement(By.name("mobile")).clear();
+        manager.driver.findElement(By.name("mobile")).sendKeys(contactData.getModilePhone());
+        manager.driver.findElement(By.name("work")).clear();
+        manager.driver.findElement(By.name("work")).sendKeys(contactData.getWorkPhone());
+        manager.driver.findElement(By.name("email")).clear();
+        manager.driver.findElement(By.name("email")).sendKeys(contactData.getEmailFirsts());
+        manager.driver.findElement(By.name("email2")).clear();
+        manager.driver.findElement(By.name("email2")).sendKeys(contactData.getEmailSecond());
+        new Select(manager.driver.findElement(By.name("bday"))).selectByVisibleText(contactData.getBirthdayDay());
+        new Select(manager.driver.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBithdayMounth());
+        manager.driver.findElement(By.name("byear")).clear();
+        manager.driver.findElement(By.name("byear")).sendKeys(contactData.getBirthdayYear());
+        new Select(manager.driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getSelectGroup());
+        manager.driver.findElement(By.name("address2")).clear();
+        manager.driver.findElement(By.name("address2")).sendKeys(contactData.getSecondaryAddressSecond());
+        manager.driver.findElement(By.name("phone2")).clear();
+        manager.driver.findElement(By.name("phone2")).sendKeys(contactData.getSecondaryAddressHome());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.fw;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.junit.Assert.fail;
 
@@ -9,17 +10,17 @@ import static org.junit.Assert.fail;
  */
 public class ApplicationManager {
 
+    public WebDriver driver;
+    public String baseUrl;
+    public ApplicationManager app;
+    public StringBuffer verificationErrors = new StringBuffer();
+
     public NavigationHelper navigationHelper;
     public GroupHelper groupHelper;
     public ContactHelper contactHelper;
-    public HelperBase helperBase;
-    WebDriver driver;
-    String baseUrl;
-    ApplicationManager app;
-    StringBuffer verificationErrors = new StringBuffer();
 
     public ApplicationManager() {
-        ApplicationManager app;
+        driver = new FirefoxDriver();
         WebDriver driver;
         String baseUrl;
         StringBuffer verificationErrors = new StringBuffer();

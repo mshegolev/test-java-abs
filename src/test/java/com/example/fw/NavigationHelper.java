@@ -11,19 +11,19 @@ public class NavigationHelper extends HelperBase {
         super(manager);
     }
 
-    public void openMainPage(ApplicationManager applicationManager) {
-        applicationManager.driver.get(String.format("%s", applicationManager.baseUrl));
+    public void openMainPage() {
+        manager.driver.get(String.format("%s", manager.baseUrl));
     }
 
-    public void openGroupsPage(ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.linkText("groups")).click();
+    public void openGroupsPage() {
+        manager.driver.findElement(By.linkText("groups")).click();
     }
 
-    public void returnToHomePage(ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.linkText("home page")).click();
+    public void returnToHomePage() {
+        manager.driver.findElement(By.linkText("home page")).click();
     }
 
-    public void returnToGroupsPage(ApplicationManager applicationManager) {
-        applicationManager.driver.findElement(By.linkText("group page")).click();
+    public void returnToGroupsPage() {
+        manager.driver.findElement(By.linkText("group page")).click();
     }
 }
