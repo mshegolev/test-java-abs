@@ -9,29 +9,29 @@ public class AlsoGroupCreationTests extends TestBase{
 
     @Test
     public void testNonEmptyGroupCreation() throws Exception {
-        app.openMainPage();
-        app.openGroupsPage();
-        app.initGroupsPage();
+        app.navigationHelper.openMainPage(app);
+        app.navigationHelper.openGroupsPage(app);
+        app.groupHelper.initGroupsPage(app);
         GroupsData groupsData = new GroupsData();
 
         groupsData.name = "group name 1";
         groupsData.header = "group name 1";
         groupsData.footer = "group name 1";
 
-        app.fillGroupForm(groupsData);
-        app.submitGroupCreation();
-        app.returnToGroupsPage();
+        app.groupHelper.fillGroupForm(groupsData, app);
+        app.groupHelper.submitGroupCreation(app);
+        app.navigationHelper.returnToGroupsPage(app);
 
     }
 
     @Test
     public void testEmptyGroupCreation() throws Exception {
-        app.openMainPage();
-        app.openGroupsPage();
-        app.initGroupsPage();
-        app.fillGroupForm();
-        app.submitGroupCreation();
-        app.returnToGroupsPage();
+        app.navigationHelper.openMainPage(app);
+        app.navigationHelper.openGroupsPage(app);
+        app.groupHelper.initGroupsPage(app);
+        app.groupHelper.fillGroupForm();
+        app.groupHelper.submitGroupCreation(app);
+        app.navigationHelper.returnToGroupsPage(app);
     }
 
 

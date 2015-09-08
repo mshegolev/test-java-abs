@@ -9,28 +9,28 @@ import org.testng.annotations.Test;
 public class ContactCreationTests extends TestBase {
     @Test
     public void addNonEmptyContactNoGroup() throws Exception {
-            app.openMainPage();
-            app.initCreateContactPage();
+            app.navigationHelper.openMainPage(app);
+            app.contactHelper.initCreateContactPage(app);
         ContactData contactData = new ContactData();
-        app.defaultContact(contactData);
-        app.fillContactForm(contactData);
-            app.submitContactCreation();
-            app.returnToHomePage();
+        app.contactHelper.defaultContact(contactData);
+        app.contactHelper.fillContactForm(contactData, app);
+            app.contactHelper.submitContactCreation(app);
+            app.navigationHelper.returnToHomePage(app);
         }
 
     @Test
     public void addNonEmptyContactToGroup() throws Exception {
-        app.openMainPage();
-        app.openGroupsPage();
-        app.initGroupsPage();
+        app.navigationHelper.openMainPage(app);
+        app.navigationHelper.openGroupsPage(app);
+        app.groupHelper.initGroupsPage(app);
         GroupsData groupsData = new GroupsData();
         groupsData.name = "Auto_addNonEmptyContactToGroup1";
         groupsData.header = "header test for new contact";
         groupsData.footer = "footer test for new contact";
-        app.fillGroupForm(groupsData);
-        app.submitGroupCreation();
-        app.openMainPage();
-        app.initCreateContactPage();
+        app.groupHelper.fillGroupForm(groupsData, app);
+        app.groupHelper.submitGroupCreation(app);
+        app.navigationHelper.openMainPage(app);
+        app.contactHelper.initCreateContactPage(app);
         ContactData contactData = new ContactData();
         contactData.firstName = "firstName";
         contactData.lastName = "lastName";
@@ -46,18 +46,18 @@ public class ContactCreationTests extends TestBase {
         contactData.selectGroup = groupsData.name;
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         contactData.secondaryAddressHome = "secondaryAddressHome";
-        app.fillContactForm();
-        app.submitContactCreation();
-        app.returnToHomePage();
+        app.contactHelper.fillContactForm();
+        app.contactHelper.submitContactCreation(app);
+        app.navigationHelper.returnToHomePage(app);
     }
 
     @Test
     public void addEmptyContact() throws Exception {
-        app.openMainPage();
-        app.initCreateContactPage();
-        app.fillContactForm();
-        app.submitContactCreation();
-        app.returnToHomePage();
+        app.navigationHelper.openMainPage(app);
+        app.contactHelper.initCreateContactPage(app);
+        app.contactHelper.fillContactForm();
+        app.contactHelper.submitContactCreation(app);
+        app.navigationHelper.returnToHomePage(app);
     }
 /*
     @Test
