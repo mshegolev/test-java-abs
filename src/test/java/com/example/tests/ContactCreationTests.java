@@ -4,33 +4,33 @@ package com.example.tests;
 import org.testng.annotations.Test;
 
 /**
- #parse Created by Mikhail on 25.08.2015.
+ * #parse Created by Mikhail on 25.08.2015.
  */
 public class ContactCreationTests extends TestBase {
     @Test
     public void addNonEmptyContactNoGroup() throws Exception {
-            app.navigationHelper.openMainPage(app);
-            app.contactHelper.initCreateContactPage(app);
+        app.getNavigationHelper().openMainPage();
+        app.getContactHelper().initCreateContactPage();
         ContactData contactData = new ContactData();
-        app.contactHelper.defaultContact(contactData);
-        app.contactHelper.fillContactForm(contactData, app);
-            app.contactHelper.submitContactCreation(app);
-            app.navigationHelper.returnToHomePage(app);
-        }
+        app.getContactHelper().defaultContact(contactData);
+        app.getContactHelper().fillContactForm(contactData);
+        app.getContactHelper().submitContactCreation();
+        app.getNavigationHelper().returnToHomePage();
+    }
 
     @Test
     public void addNonEmptyContactToGroup() throws Exception {
-        app.navigationHelper.openMainPage(app);
-        app.navigationHelper.openGroupsPage(app);
-        app.groupHelper.initGroupsPage(app);
+        app.getNavigationHelper().openMainPage();
+        app.getNavigationHelper().openGroupsPage();
+        app.getGroupHelper().initGroupsPage();
         GroupsData groupsData = new GroupsData();
         groupsData.name = "Auto_addNonEmptyContactToGroup1";
         groupsData.header = "header test for new contact";
         groupsData.footer = "footer test for new contact";
-        app.groupHelper.fillGroupForm(groupsData, app);
-        app.groupHelper.submitGroupCreation(app);
-        app.navigationHelper.openMainPage(app);
-        app.contactHelper.initCreateContactPage(app);
+        app.getGroupHelper().fillGroupForm(groupsData);
+        app.getGroupHelper().submitGroupCreation();
+        app.getNavigationHelper().openMainPage();
+        app.getContactHelper().initCreateContactPage();
         ContactData contactData = new ContactData();
         contactData.firstName = "firstName";
         contactData.lastName = "lastName";
@@ -46,18 +46,18 @@ public class ContactCreationTests extends TestBase {
         contactData.selectGroup = groupsData.name;
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         contactData.secondaryAddressHome = "secondaryAddressHome";
-        app.contactHelper.fillContactForm();
-        app.contactHelper.submitContactCreation(app);
-        app.navigationHelper.returnToHomePage(app);
+        app.getContactHelper().fillContactForm();
+        app.getContactHelper().submitContactCreation();
+        app.getNavigationHelper().returnToHomePage();
     }
 
     @Test
     public void addEmptyContact() throws Exception {
-        app.navigationHelper.openMainPage(app);
-        app.contactHelper.initCreateContactPage(app);
-        app.contactHelper.fillContactForm();
-        app.contactHelper.submitContactCreation(app);
-        app.navigationHelper.returnToHomePage(app);
+        app.getNavigationHelper().openMainPage();
+        app.getContactHelper().initCreateContactPage();
+        app.getContactHelper().fillContactForm();
+        app.getContactHelper().submitContactCreation();
+        app.getNavigationHelper().returnToHomePage();
     }
 /*
     @Test

@@ -2,7 +2,6 @@ package com.example.fw;
 
 import com.example.tests.ContactData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by mikhail.shchegolev on 04.09.2015.
@@ -38,38 +37,49 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactCreation() {
-        manager.driver.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void initCreateContactPage() {
-        manager.driver.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
 
     public void fillContactForm(ContactData contactData) {
-        manager.driver.findElement(By.name("firstname")).clear();
-        manager.driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
-        manager.driver.findElement(By.name("lastname")).clear();
-        manager.driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-        manager.driver.findElement(By.name("address")).clear();
-        manager.driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
-        manager.driver.findElement(By.name("home")).clear();
-        manager.driver.findElement(By.name("home")).sendKeys(contactData.getHomePhone());
-        manager.driver.findElement(By.name("mobile")).clear();
-        manager.driver.findElement(By.name("mobile")).sendKeys(contactData.getModilePhone());
-        manager.driver.findElement(By.name("work")).clear();
-        manager.driver.findElement(By.name("work")).sendKeys(contactData.getWorkPhone());
-        manager.driver.findElement(By.name("email")).clear();
-        manager.driver.findElement(By.name("email")).sendKeys(contactData.getEmailFirsts());
-        manager.driver.findElement(By.name("email2")).clear();
-        manager.driver.findElement(By.name("email2")).sendKeys(contactData.getEmailSecond());
-        new Select(manager.driver.findElement(By.name("bday"))).selectByVisibleText(contactData.getBirthdayDay());
-        new Select(manager.driver.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBithdayMounth());
-        manager.driver.findElement(By.name("byear")).clear();
-        manager.driver.findElement(By.name("byear")).sendKeys(contactData.getBirthdayYear());
-        new Select(manager.driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getSelectGroup());
-        manager.driver.findElement(By.name("address2")).clear();
-        manager.driver.findElement(By.name("address2")).sendKeys(contactData.getSecondaryAddressSecond());
-        manager.driver.findElement(By.name("phone2")).clear();
-        manager.driver.findElement(By.name("phone2")).sendKeys(contactData.getSecondaryAddressHome());
+        type(By.name("firstname"), contactData.getFirstName());
+        type(By.name("lastname"), contactData.getLastName());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomePhone());
+        type(By.name("mobile"), contactData.getModilePhone());
+        type(By.name("work"), contactData.getWorkPhone());
+        type(By.name("email"), contactData.getEmailFirsts());
+        type(By.name("email2"), contactData.getEmailSecond());
+        selectByText(By.name("bday"), contactData.getBirthdayDay());
+        selectByText(By.name("bmonth"), contactData.getBithdayMounth());
+        type(By.name("byear"), contactData.getBirthdayYear());
+        selectByText(By.name("new_group"), contactData.getSelectGroup());
+        type(By.name("address2"), contactData.getSecondaryAddressSecond());
+        type(By.name("phone2"), contactData.getSecondaryAddressHome());
+    }
+
+    public void initContactModification(int index) {
+        for (; (By.xpath("//*[@id='id" + index + "']/../..//img[@alt=\"Edit\"]")) == null; index++) {
+            index++;
+            if (index == 20) {
+                break;
+            }
+        }
+        click(By.xpath("//*[@id='id" + index + "']/../..//img[@alt=\"Edit\"]"));
+
+
+        //click(By.xpath("//input[@name='selected[]' and @value=" + index + "]/../../td[7]"));
+
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
+
+    public void deleteContact() {
+        click(By.xpath("//input[@value='Delete']"));
     }
 }

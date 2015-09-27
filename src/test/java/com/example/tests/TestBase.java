@@ -5,7 +5,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 /**
- #parse Created by Mikhail on 25.08.2015.
+ * #parse Created by Mikhail on 25.08.2015.
  */
 public class TestBase {
 

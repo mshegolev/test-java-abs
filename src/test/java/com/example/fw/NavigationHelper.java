@@ -12,18 +12,18 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void openMainPage() {
-        manager.driver.get(String.format("%s", manager.baseUrl));
+        driver.get(String.format("%s", manager.baseUrl));
     }
 
     public void openGroupsPage() {
-        manager.driver.findElement(By.linkText("groups")).click();
+        click(By.linkText("groups"));
     }
 
     public void returnToHomePage() {
-        manager.driver.findElement(By.linkText("home page")).click();
+        click(By.linkText("home page"));
     }
 
     public void returnToGroupsPage() {
-        manager.driver.findElement(By.linkText("group page")).click();
+        click(By.linkText("group page"));
     }
 }
