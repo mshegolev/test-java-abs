@@ -7,11 +7,10 @@ import org.openqa.selenium.By;
  * Created by mikhail.shchegolev on 04.09.2015.
  */
 public class ContactHelper extends HelperBase {
+    private int index;
+
     public ContactHelper(ApplicationManager manager) {
         super(manager);
-    }
-
-    public void fillContactForm() {
     }
 
     public void defaultContact(ContactData contactData) {
@@ -30,7 +29,7 @@ public class ContactHelper extends HelperBase {
         //TODO: add input year
         contactData.birthdayYear = "1990";
         //TODO: add select exsistings group
-        contactData.selectGroup = "[none]";
+        //contactData.selectGroup = "[none]";
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         //TODO: BUG3|2. phone2 may by rename this field for secondaddresshome
         contactData.secondaryAddressHome = "secondaryAddressHome";
@@ -44,35 +43,73 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void fillContactForm(ContactData contactData) {
-        type(By.name("firstname"), contactData.getFirstName());
-        type(By.name("lastname"), contactData.getLastName());
-        type(By.name("address"), contactData.getAddress());
-        type(By.name("home"), contactData.getHomePhone());
-        type(By.name("mobile"), contactData.getModilePhone());
-        type(By.name("work"), contactData.getWorkPhone());
-        type(By.name("email"), contactData.getEmailFirsts());
-        type(By.name("email2"), contactData.getEmailSecond());
-        selectByText(By.name("bday"), contactData.getBirthdayDay());
-        selectByText(By.name("bmonth"), contactData.getBithdayMounth());
-        type(By.name("byear"), contactData.getBirthdayYear());
-        selectByText(By.name("new_group"), contactData.getSelectGroup());
-        type(By.name("address2"), contactData.getSecondaryAddressSecond());
-        type(By.name("phone2"), contactData.getSecondaryAddressHome());
+    public void fillContactForm() {
+        ContactData contactData = new ContactData();
+        fillContactForm(contactData);
     }
 
-    public void initContactModification(int index) {
-        for (; (By.xpath("//*[@id='id" + index + "']/../..//img[@alt=\"Edit\"]")) == null; index++) {
-            index++;
-            if (index == 20) {
-                break;
-            }
-        }
-        click(By.xpath("//*[@id='id" + index + "']/../..//img[@alt=\"Edit\"]"));
 
+    public void fillContactFormUpdate(ContactData contactData) {
+        type(By.name("firstname"), contactData.firstName);
+        type(By.name("lastname"), contactData.lastName);
+        type(By.name("address"), contactData.address);
+        type(By.name("home"), contactData.homePhone);
+        type(By.name("mobile"), contactData.modilePhone);
+        type(By.name("work"), contactData.workPhone);
+        type(By.name("email"), contactData.emailFirsts);
+        type(By.name("email2"), contactData.emailSecond);
+        selectByText(By.name("bday"), contactData.birthdayDay);
+        selectByText(By.name("bmonth"), contactData.bithdayMounth);
+        type(By.name("byear"), contactData.birthdayYear);
+        type(By.name("address2"), contactData.secondaryAddressSecond);
+        type(By.name("phone2"), contactData.secondaryAddressHome);
+    }
+    public void fillContactForm(ContactData contactData) {
+        type(By.name("firstname"), contactData.firstName);
+        type(By.name("lastname"), contactData.lastName);
+        type(By.name("address"), contactData.address);
+        type(By.name("home"), contactData.homePhone);
+        type(By.name("mobile"), contactData.modilePhone);
+        type(By.name("work"), contactData.workPhone);
+        type(By.name("email"), contactData.emailFirsts);
+        type(By.name("email2"), contactData.emailSecond);
+        selectByText(By.name("bday"), contactData.birthdayDay);
+        selectByText(By.name("bmonth"), contactData.bithdayMounth);
+        type(By.name("byear"), contactData.birthdayYear);
+        selectByText(By.name("new_group"), contactData.selectGroup);
+        type(By.name("address2"), contactData.secondaryAddressSecond);
+        type(By.name("phone2"), contactData.secondaryAddressHome);
+    }
 
-        //click(By.xpath("//input[@name='selected[]' and @value=" + index + "]/../../td[7]"));
+    public boolean isConctactExist() {
+        return isConctactExist(2);
+    }
 
+    public boolean isConctactExist(int index) {
+        return isElementPresent(getContact(index));
+    }
+
+    private By getContactByIndex(String xpathExpression) {
+        return By.xpath(xpathExpression);
+    }
+
+    private String selectContactByIndex(int index) {
+        return ".//*[@id='maintable']/tbody/tr[" + index + "]/td[7]/a/img";
+    }
+
+    public boolean initContactModification() {
+        return initContactModification(2);
+    }
+
+    public boolean initContactModification(int index) {
+        if (isConctactExist(index))
+            click(getContact(index));
+        return true;
+
+    }
+
+    private By getContact(int index) {
+        return getContactByIndex(selectContactByIndex(index));
     }
 
     public void submitContactModification() {
@@ -80,6 +117,6 @@ public class ContactHelper extends HelperBase {
     }
 
     public void deleteContact() {
-        click(By.xpath("//input[@value='Delete']"));
+        click(getContactByIndex("//input[@value='Delete']"));
     }
 }

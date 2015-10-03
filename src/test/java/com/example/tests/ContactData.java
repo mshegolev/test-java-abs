@@ -1,21 +1,21 @@
 package com.example.tests;
 
 public class ContactData {
-    public String firstName;
-    public String lastName;
-    public String address;
-    public String homePhone;
-    public String modilePhone;
-    public String workPhone;
-    public String emailFirsts;
-    public String emailSecond;
-    public String birthdayDay;
-    public String bithdayMounth;
-    public String birthdayYear;
-    public String selectGroup;
-    public String secondaryAddressSecond;
-    public String secondaryAddressHome;
-    public String groupName;
+    public String firstName = "name";
+    public String lastName = "lastname";
+    public String address = "address";
+    public String homePhone = "12345678";
+    public String modilePhone = "+9876543";
+    public String workPhone = "9876543";
+    public String emailFirsts = "fisthEmail";
+    public String emailSecond = "secondEmail";
+    public String birthdayDay = "1";
+    public String bithdayMounth = "January";
+    public String birthdayYear = "1990";
+    public String selectGroup = "[none]";
+    public String secondaryAddressSecond = "secondaryAddressSecond";
+    public String secondaryAddressHome = "secondaryAddressHome";
+    public String groupName = "groupName";
 
     public ContactData(String firstName, String lastName, String address, String homePhone, String modilePhone, String workPhone, String emailFirsts, String emailSecond, String birthdayDay, String bithdayMounth, String birthdayYear, String selectGroup, String secondaryAddressSecond, String secondaryAddressHome) {
         this.firstName = firstName;
