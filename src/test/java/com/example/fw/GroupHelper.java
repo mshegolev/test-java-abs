@@ -54,7 +54,7 @@ public class GroupHelper extends HelperBase {
 
     public List<GroupsData> getGroups() {
         List<GroupsData> groups = new ArrayList<GroupsData>();
-        List<WebElement> checkboxes = driver.findElements(By.name("selcted[]"));
+        List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
         for (WebElement checkbox : checkboxes){
             GroupsData groupsData = new GroupsData();
             String title = checkbox.getAttribute("title");
