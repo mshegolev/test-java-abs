@@ -3,10 +3,14 @@ package com.example.fw;
 import com.example.tests.GroupsData;
 import org.openqa.selenium.By;
 
+import java.util.List;
+
 /**
  * Created by mikhail.shchegolev on 04.09.2015.
  */
 public class GroupHelper extends HelperBase {
+    private List<GroupsData> groups;
+
     public GroupHelper(ApplicationManager manager) {
         super(manager);
     }
@@ -44,5 +48,10 @@ public class GroupHelper extends HelperBase {
 
     public void submitGroupModification(int index) {
         click(By.name("update"));
+    }
+
+    public List<GroupsData> getGroups() {
+        List<GroupsData> groups =
+        return groups;
     }
 }

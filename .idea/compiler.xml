@@ -24,10 +24,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Test-abs" />
+        <module name="test-java-abs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Test-abs" target="1.5" />
+      <module name="test-java-abs" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
