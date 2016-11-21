@@ -22,8 +22,8 @@ public class GroupCreationTests extends TestBase {
         app.getGroupHelper().initGroupsPage();
         GroupsData groupsData = new GroupsData();
         groupsData.name = "group name 1";
-        groupsData.header = "group name 1";
-        groupsData.footer = "group name 1";
+        groupsData.header = "group header 1";
+        groupsData.footer = "group footer 1";
         app.getGroupHelper().fillGroupForm(groupsData);
         app.getGroupHelper().submitGroupCreation();
         app.getNavigationHelper().returnToGroupsPage();
@@ -33,6 +33,8 @@ public class GroupCreationTests extends TestBase {
 
         //compare state
         assertEquals(newList.size(),oldList.size()+1);
+        oldList.add(groupsData);
+        assertEquals(newList,oldList);
 
     }
 
