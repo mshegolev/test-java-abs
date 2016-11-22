@@ -15,7 +15,7 @@ public class NavigationHelper extends HelperBase {
         driver.get(String.format("%s", manager.baseUrl));
     }
 
-    public void openGroupsPage() {
+    public void gotoGroupsPage() {
         click(By.linkText("groups"));
     }
 

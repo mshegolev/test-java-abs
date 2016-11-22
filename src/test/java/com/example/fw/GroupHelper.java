@@ -1,6 +1,6 @@
 package com.example.fw;
 
-import com.example.tests.GroupsData;
+import com.example.tests.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by mikhail.shchegolev on 04.09.2015.
  */
 public class GroupHelper extends HelperBase {
-    private List<GroupsData> groups;
+    private List<GroupData> groups;
 
     public GroupHelper(ApplicationManager manager) {
         super(manager);
@@ -21,10 +21,10 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
-    public void fillGroupForm(GroupsData groupsData) {
-        type(By.name("group_name"), groupsData.name);
-        type(By.name("group_header"), groupsData.header);
-        type(By.name("group_footer"), groupsData.footer);
+    public void fillGroupForm(GroupData groupData) {
+        type(By.name("group_name"), groupData.name);
+        type(By.name("group_header"), groupData.header);
+        type(By.name("group_footer"), groupData.footer);
     }
 
     public void submitGroupCreation() {
@@ -39,7 +39,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private void selectGroupByIndex(int index) {
-        click(By.xpath("//input[@name='selected[]'][" + index + "]"));
+        click(By.xpath("//input[@name='selected[]'][" + (index+1) + "]"));
     }
 
     public void initGroupModification(int index) {
@@ -52,14 +52,14 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public List<GroupsData> getGroups() {
-        List<GroupsData> groups = new ArrayList<GroupsData>();
+    public List<GroupData> getGroups() {
+        List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
         for (WebElement checkbox : checkboxes){
-            GroupsData groupsData = new GroupsData();
+            GroupData groupData = new GroupData();
             String title = checkbox.getAttribute("title");
-            groupsData.name=title.substring("Select (".length(),title.length() - ")".length());
-            groups.add(groupsData);
+            groupData.name=title.substring("Select (".length(),title.length() - ")".length());
+            groups.add(groupData);
         }
         return groups;
     }

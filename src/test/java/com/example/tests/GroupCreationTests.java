@@ -1,8 +1,9 @@
 package com.example.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static org.testng.Assert.assertEquals;
 
@@ -11,43 +12,51 @@ import static org.testng.Assert.assertEquals;
  */
 public class GroupCreationTests extends TestBase {
 
-    @Test
-    public void testNonEmptyGroupCreation() throws Exception {
+
+    public String generateRandomString(){
+        Random rnd = new Random();
+        String s;
+        if (rnd.nextInt(3) == 0){
+            return s ="";
+        } else {
+            return s = "test" + rnd.nextInt();
+        }
+    }
+
+    @DataProvider
+    public Iterator<Object[]> randomValidGroupGenerator(){
+        List<Object[]> list = new ArrayList<Object[]>(); // Object[] произвольный набор объектов
+        for (int i =0; i<5; i++){
+            GroupData group = new GroupData();
+            group.name = generateRandomString();
+            group.header = generateRandomString();
+            group.footer = generateRandomString();;
+            list.add(new Object[]{group});
+        }
+        return list.iterator();
+    }
+
+    @Test(dataProvider = "randomValidGroupGenerator")
+    public void testGroupCreationWithValidData(GroupData group) throws Exception {
         app.getNavigationHelper().openMainPage();
-        app.getNavigationHelper().openGroupsPage();
+        app.getNavigationHelper().gotoGroupsPage();
         // save old test
-        List<GroupsData> oldList= app.getGroupHelper().getGroups();
+        List<GroupData> oldList = app.getGroupHelper().getGroups();
 
         //actions
         app.getGroupHelper().initGroupsPage();
-        GroupsData groupsData = new GroupsData();
-        groupsData.name = "group name 1";
-        groupsData.header = "group header 1";
-        groupsData.footer = "group footer 1";
-        app.getGroupHelper().fillGroupForm(groupsData);
+        app.getGroupHelper().fillGroupForm(group);
         app.getGroupHelper().submitGroupCreation();
         app.getNavigationHelper().returnToGroupsPage();
 
         //save new state
-        List<GroupsData> newList = app.getGroupHelper().getGroups();
+        List<GroupData> newList = app.getGroupHelper().getGroups();
 
         //compare state
-        assertEquals(newList.size(),oldList.size()+1);
-        oldList.add(groupsData);
+        oldList.add(group);
+        Collections.sort(oldList);
         assertEquals(newList,oldList);
-
     }
-
-    @Test
-    public void testEmptyGroupCreation() throws Exception {
-        app.getNavigationHelper().openMainPage();
-        app.getNavigationHelper().openGroupsPage();
-        app.getGroupHelper().initGroupsPage();
-        app.getGroupHelper().fillGroupForm(new GroupsData());
-        app.getGroupHelper().submitGroupCreation();
-        app.getNavigationHelper().returnToGroupsPage();
-    }
-
 
 }
 

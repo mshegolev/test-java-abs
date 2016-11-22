@@ -21,13 +21,13 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void addNonEmptyContactToGroup() throws Exception {
         app.getNavigationHelper().openMainPage();
-        app.getNavigationHelper().openGroupsPage();
+        app.getNavigationHelper().gotoGroupsPage();
         app.getGroupHelper().initGroupsPage();
-        GroupsData groupsData = new GroupsData();
-        groupsData.name = "Auto_addNonEmptyContactToGroup1";
-        groupsData.header = "header test for new contact";
-        groupsData.footer = "footer test for new contact";
-        app.getGroupHelper().fillGroupForm(groupsData);
+        GroupData groupData = new GroupData();
+        groupData.name = "Auto_addNonEmptyContactToGroup1";
+        groupData.header = "header test for new contact";
+        groupData.footer = "footer test for new contact";
+        app.getGroupHelper().fillGroupForm(groupData);
         app.getGroupHelper().submitGroupCreation();
         app.getNavigationHelper().openMainPage();
         app.getContactHelper().initCreateContactPage();
@@ -43,7 +43,7 @@ public class ContactCreationTests extends TestBase {
         contactData.birthdayDay = "1";
         contactData.bithdayMounth = "January";
         contactData.birthdayYear = "1990";
-        contactData.selectGroup = groupsData.name;
+        contactData.selectGroup = groupData.name;
         contactData.secondaryAddressSecond = "secondaryAddressSecond";
         contactData.secondaryAddressHome = "secondaryAddressHome";
         app.getContactHelper().fillContactForm();
